@@ -16,22 +16,22 @@ import {
   toggleMarkersForSelection
 } from "./markers";
 
-const ADD_SESSION_COMMAND = "rinemaca.addSessionLineMarker";
-const ADD_WORKSPACE_COMMAND = "rinemaca.addWorkspaceLineMarker";
-const TOGGLE_SESSION_COMMAND = "rinemaca.toggleSessionLineMarker";
-const TOGGLE_WORKSPACE_COMMAND = "rinemaca.toggleWorkspaceLineMarker";
-const REMOVE_COMMAND = "rinemaca.removeLineMarker";
+const ADD_SESSION_COMMAND = "rinemaca.addSessionMarker";
+const ADD_WORKSPACE_COMMAND = "rinemaca.addWorkspaceMarker";
+const TOGGLE_SESSION_COMMAND = "rinemaca.toggleSessionMarker";
+const TOGGLE_WORKSPACE_COMMAND = "rinemaca.toggleWorkspaceMarker";
+const REMOVE_COMMAND = "rinemaca.removeMarker";
 const OPEN_COMMAND = "rinemaca.openMarker";
 const CLEAR_SESSION_COMMAND = "rinemaca.clearSessionMarkers";
 const CLEAR_WORKSPACE_COMMAND = "rinemaca.clearWorkspaceMarkers";
-const EXPORT_SESSION_CSV_COMMAND = "rinemaca.exportSessionMarkersCsv";
-const EXPORT_WORKSPACE_CSV_COMMAND = "rinemaca.exportWorkspaceMarkersCsv";
+const EXPORT_SESSION_CSV_COMMAND = "rinemaca.exportSessionCsv";
+const EXPORT_WORKSPACE_CSV_COMMAND = "rinemaca.exportWorkspaceCsv";
 const NEXT_MARKER_COMMAND = "rinemaca.nextMarker";
-const PREVIOUS_MARKER_COMMAND = "rinemaca.previousMarker";
+const PREV_MARKER_COMMAND = "rinemaca.prevMarker";
 const NEXT_SESSION_MARKER_COMMAND = "rinemaca.nextSessionMarker";
-const PREVIOUS_SESSION_MARKER_COMMAND = "rinemaca.previousSessionMarker";
+const PREV_SESSION_MARKER_COMMAND = "rinemaca.prevSessionMarker";
 const NEXT_WORKSPACE_MARKER_COMMAND = "rinemaca.nextWorkspaceMarker";
-const PREVIOUS_WORKSPACE_MARKER_COMMAND = "rinemaca.previousWorkspaceMarker";
+const PREV_WORKSPACE_MARKER_COMMAND = "rinemaca.prevWorkspaceMarker";
 const VIEW_ID = "rinemacaMarkersView";
 
 export function activate(context: vscode.ExtensionContext): void {
@@ -130,19 +130,19 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.commands.registerCommand(NEXT_MARKER_COMMAND, async () => {
       await revealRelativeMarker(1);
     }),
-    vscode.commands.registerCommand(PREVIOUS_MARKER_COMMAND, async () => {
+    vscode.commands.registerCommand(PREV_MARKER_COMMAND, async () => {
       await revealRelativeMarker(-1);
     }),
     vscode.commands.registerCommand(NEXT_SESSION_MARKER_COMMAND, async () => {
       await revealRelativeMarker(1, "session");
     }),
-    vscode.commands.registerCommand(PREVIOUS_SESSION_MARKER_COMMAND, async () => {
+    vscode.commands.registerCommand(PREV_SESSION_MARKER_COMMAND, async () => {
       await revealRelativeMarker(-1, "session");
     }),
     vscode.commands.registerCommand(NEXT_WORKSPACE_MARKER_COMMAND, async () => {
       await revealRelativeMarker(1, "workspace");
     }),
-    vscode.commands.registerCommand(PREVIOUS_WORKSPACE_MARKER_COMMAND, async () => {
+    vscode.commands.registerCommand(PREV_WORKSPACE_MARKER_COMMAND, async () => {
       await revealRelativeMarker(-1, "workspace");
     }),
     vscode.workspace.onDidChangeTextDocument(() => {

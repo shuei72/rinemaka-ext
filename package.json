@@ -1,13 +1,21 @@
 {
   "name": "rinemaca",
   "displayName": "Rinemaca",
-  "description": "Line marker extension for VS Code with session and workspace-persisted markers.",
+  "description": "Whole-line bookmarks for VS Code with session markers, workspace markers, sidebar navigation, and CSV export.",
   "version": "0.0.1",
   "author": "shuei",
   "publisher": "shuei",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shuei72/rinemaca-ext.git"
+  },
+  "homepage": "https://github.com/shuei72/rinemaca-ext#readme",
+  "bugs": {
+    "url": "https://github.com/shuei72/rinemaca-ext/issues"
+  },
   "engines": {
-    "vscode": "^1.60.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Other"
@@ -16,41 +24,53 @@
     "marker",
     "markers",
     "bookmark",
+    "bookmarks",
     "line bookmark",
     "line marker",
+    "whole line",
+    "line highlight",
     "navigation",
-    "sidebar"
+    "sidebar",
+    "csv"
   ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": {
+      "supported": true
+    }
+  },
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "rinemaca.addSessionLineMarker",
+        "command": "rinemaca.addSessionMarker",
         "title": "Add Session Marker",
         "category": "Rinemaca",
         "shortTitle": "Add Session Marker"
       },
       {
-        "command": "rinemaca.addWorkspaceLineMarker",
+        "command": "rinemaca.addWorkspaceMarker",
         "title": "Add Workspace Marker",
         "category": "Rinemaca",
         "shortTitle": "Add Workspace Marker"
       },
       {
-        "command": "rinemaca.toggleSessionLineMarker",
+        "command": "rinemaca.toggleSessionMarker",
         "title": "Toggle Session Marker",
         "category": "Rinemaca",
         "shortTitle": "Toggle Session Marker"
       },
       {
-        "command": "rinemaca.toggleWorkspaceLineMarker",
+        "command": "rinemaca.toggleWorkspaceMarker",
         "title": "Toggle Workspace Marker",
         "category": "Rinemaca",
         "shortTitle": "Toggle Workspace Marker"
       },
       {
-        "command": "rinemaca.removeLineMarker",
+        "command": "rinemaca.removeMarker",
         "title": "Remove Marker",
         "category": "Rinemaca",
         "shortTitle": "Remove Marker",
@@ -72,13 +92,13 @@
         "shortTitle": "Clear Workspace Markers"
       },
       {
-        "command": "rinemaca.exportSessionMarkersCsv",
+        "command": "rinemaca.exportSessionCsv",
         "title": "Export Session Markers",
         "category": "Rinemaca",
         "shortTitle": "Export Session Markers"
       },
       {
-        "command": "rinemaca.exportWorkspaceMarkersCsv",
+        "command": "rinemaca.exportWorkspaceCsv",
         "title": "Export Workspace Markers",
         "category": "Rinemaca",
         "shortTitle": "Export Workspace Markers"
@@ -90,7 +110,7 @@
         "shortTitle": "Next Marker"
       },
       {
-        "command": "rinemaca.previousMarker",
+        "command": "rinemaca.prevMarker",
         "title": "Previous Marker",
         "category": "Rinemaca",
         "shortTitle": "Previous Marker"
@@ -102,7 +122,7 @@
         "shortTitle": "Next Session Marker"
       },
       {
-        "command": "rinemaca.previousSessionMarker",
+        "command": "rinemaca.prevSessionMarker",
         "title": "Previous Session Marker",
         "category": "Rinemaca",
         "shortTitle": "Previous Session Marker"
@@ -114,7 +134,7 @@
         "shortTitle": "Next Workspace Marker"
       },
       {
-        "command": "rinemaca.previousWorkspaceMarker",
+        "command": "rinemaca.prevWorkspaceMarker",
         "title": "Previous Workspace Marker",
         "category": "Rinemaca",
         "shortTitle": "Previous Workspace Marker"
@@ -152,11 +172,11 @@
       ],
       "rinemaca.editorMenu": [
         {
-          "command": "rinemaca.toggleSessionLineMarker",
+          "command": "rinemaca.toggleSessionMarker",
           "group": "1_toggle@1"
         },
         {
-          "command": "rinemaca.toggleWorkspaceLineMarker",
+          "command": "rinemaca.toggleWorkspaceMarker",
           "group": "1_toggle@2"
         }
       ],
@@ -172,34 +192,34 @@
           "group": "clear@2"
         },
         {
-          "command": "rinemaca.exportSessionMarkersCsv",
+          "command": "rinemaca.exportSessionCsv",
           "when": "view == rinemacaMarkersView",
           "group": "export@1"
         },
         {
-          "command": "rinemaca.exportWorkspaceMarkersCsv",
+          "command": "rinemaca.exportWorkspaceCsv",
           "when": "view == rinemacaMarkersView",
           "group": "export@2"
         }
       ],
       "view/item/context": [
         {
-          "command": "rinemaca.removeLineMarker",
+          "command": "rinemaca.removeMarker",
           "when": "view == rinemacaMarkersView && viewItem == rinemacaSessionMarker",
           "group": "inline"
         },
         {
-          "command": "rinemaca.removeLineMarker",
+          "command": "rinemaca.removeMarker",
           "when": "view == rinemacaMarkersView && viewItem == rinemacaWorkspaceMarker",
           "group": "inline"
         },
         {
-          "command": "rinemaca.removeLineMarker",
+          "command": "rinemaca.removeMarker",
           "when": "view == rinemacaMarkersView && viewItem == rinemacaSessionMarker",
           "group": "navigation"
         },
         {
-          "command": "rinemaca.removeLineMarker",
+          "command": "rinemaca.removeMarker",
           "when": "view == rinemacaMarkersView && viewItem == rinemacaWorkspaceMarker",
           "group": "navigation"
         }
@@ -212,6 +232,11 @@
           "type": "string",
           "default": "rgba(255, 215, 0, 0.22)",
           "description": "Background color used for session-only line markers."
+        },
+        "rinemaca.sessionMarkerBorder": {
+          "type": "string",
+          "default": "rgba(255, 215, 0, 0.85)",
+          "description": "Border color used for session-only line markers."
         },
         "rinemaca.sessionMarkerOverviewRuler": {
           "type": "string",
@@ -239,6 +264,7 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile",
     "package": "npx @vscode/vsce package"
   },
   "devDependencies": {

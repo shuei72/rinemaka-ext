@@ -1,6 +1,8 @@
 # Rinemaca
 
-VS Code extension for whole-line marking.
+Rinemaca is a VS Code extension for whole-line bookmarks.
+
+It lets you mark lines for the current session or persist them per workspace, browse them from a dedicated sidebar, jump between them quickly, and export them to CSV when needed.
 
 ## Features
 
@@ -8,6 +10,7 @@ VS Code extension for whole-line marking.
 - Session markers are available only for the current VS Code session
 - Workspace markers are saved in workspace state and restored when the workspace is reopened
 - Show markers in the `Rinemaca` sidebar
+- Jump to the next or previous marker from commands
 - Export session markers and workspace markers to CSV
 
 ## Commands
@@ -53,6 +56,17 @@ The sidebar title buttons provide:
 - `Export Session Markers`
 - `Export Workspace Markers`
 
+## Settings
+
+Rinemaca provides these settings:
+
+- `rinemaca.sessionMarkerBackground`
+- `rinemaca.sessionMarkerBorder`
+- `rinemaca.sessionMarkerOverviewRuler`
+- `rinemaca.workspaceMarkerBackground`
+- `rinemaca.workspaceMarkerBorder`
+- `rinemaca.workspaceMarkerOverviewRuler`
+
 ## CSV Export
 
 Session markers and workspace markers can be exported separately to CSV.
@@ -69,6 +83,7 @@ Format:
 - Session markers live only until VS Code reloads.
 - Workspace markers are stored per workspace using VS Code workspace state.
 - If you select multiple lines, each selected line is registered as a marker.
+- Navigation commands wrap around when they reach the beginning or end of the marker list.
 - `Toggle Session Marker` adds or removes session markers only.
 - `Toggle Workspace Marker` adds or removes workspace markers only.
 - Removing a marker removes both the session marker and workspace marker at the same file and line, if both exist.

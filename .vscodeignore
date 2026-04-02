@@ -1,4 +1,9 @@
+.vscode/**
 out/test/**
+out/highlights.js
+out/highlights.js.map
+out/LineHighlightProvider.js
+out/LineHighlightProvider.js.map
 src/**
 tsconfig.json
 .gitignore

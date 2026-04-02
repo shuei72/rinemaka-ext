@@ -358,6 +358,9 @@ function recreateDecorationTypes(): void {
   sessionDecorationType = vscode.window.createTextEditorDecorationType({
     isWholeLine: true,
     backgroundColor: configuration.get<string>("sessionMarkerBackground", "rgba(255, 215, 0, 0.22)"),
+    borderWidth: "0 0 0 2px",
+    borderStyle: "solid",
+    borderColor: configuration.get<string>("sessionMarkerBorder", "rgba(255, 215, 0, 0.85)"),
     overviewRulerColor: configuration.get<string>("sessionMarkerOverviewRuler", "rgba(255, 215, 0, 0.9)")
   });
   workspaceDecorationType = vscode.window.createTextEditorDecorationType({
