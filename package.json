@@ -1,11 +1,11 @@
 {
-  "name": "rinemaca",
+  "name": "rumo-rinemaca",
   "displayName": "Rinemaca",
   "description": "Whole-line bookmarks for VS Code with session markers, workspace markers, sidebar navigation, and CSV export.",
   "version": "0.0.1",
-  "author": "shuei",
   "publisher": "shuei",
   "license": "MIT",
+  "icon": "media/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/shuei72/rinemaca-ext.git"
@@ -269,7 +269,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
-    "@types/vscode": "1.60.0",
+    "@types/vscode": "^1.74.0",
     "typescript": "^5.4.5"
   }
 }

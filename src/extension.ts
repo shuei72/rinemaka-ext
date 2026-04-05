@@ -162,6 +162,9 @@ export function activate(context: vscode.ExtensionContext): void {
 export function deactivate(): void {
 }
 
+/**
+ * Returns the marker that exists on the active editor line, if any.
+ */
 function getActiveLineMarker() {
   const editor = vscode.window.activeTextEditor;
   if (!editor) {
@@ -173,6 +176,9 @@ function getActiveLineMarker() {
   return getMarkers().find((item) => item.uri === uri && item.line === line);
 }
 
+/**
+ * Extracts a marker id from tree view items or direct string arguments.
+ */
 function resolveMarkerId(target: unknown): string | undefined {
   if (typeof target === "string") {
     return target;
@@ -195,6 +201,9 @@ function resolveMarkerId(target: unknown): string | undefined {
   return undefined;
 }
 
+/**
+ * Resolves a command target into a concrete marker record.
+ */
 function resolveMarker(target: unknown) {
   const markerId = resolveMarkerId(target);
   if (!markerId) {
@@ -204,6 +213,9 @@ function resolveMarker(target: unknown) {
   return findMarkerById(markerId);
 }
 
+/**
+ * Navigates to the next or previous marker, wrapping across files when needed.
+ */
 async function revealRelativeMarker(direction: 1 | -1, scope?: MarkerScope): Promise<void> {
   const markers = getSortedUniqueMarkers(scope);
   if (markers.length === 0) {
@@ -224,10 +236,16 @@ async function revealRelativeMarker(direction: 1 | -1, scope?: MarkerScope): Pro
   await revealMarker(markers[targetIndex]);
 }
 
+/**
+ * Wraps an index into the valid bounds of the marker list.
+ */
 function getWrappedIndex(index: number, length: number): number {
   return ((index % length) + length) % length;
 }
 
+/**
+ * Chooses the nearest marker when the current cursor position is not already marked.
+ */
 function getNearestMarkerIndex(
   markers: ReturnType<typeof getSortedUniqueMarkers>,
   activeUri: string | undefined,

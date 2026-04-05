@@ -1,92 +1,109 @@
-# Rinemaca
+﻿# Rinemaca
 
-Rinemaca is a VS Code extension for whole-line bookmarks.
-
-It lets you mark lines for the current session or persist them per workspace, browse them from a dedicated sidebar, jump between them quickly, and export them to CSV when needed.
-
-## Features
-
-- Mark the current line, or all selected lines, across the full editor width
-- Session markers are available only for the current VS Code session
-- Workspace markers are saved in workspace state and restored when the workspace is reopened
-- Show markers in the `Rinemaca` sidebar
-- Jump to the next or previous marker from commands
-- Export session markers and workspace markers to CSV
+Rinemaca is a VS Code extension for managing line markers in either session scope or workspace scope.  
+The sidebar shows marker lists and supports CSV export.
 
 ## Commands
 
-- `Rinemaca: Add Session Marker`
-- `Rinemaca: Add Workspace Marker`
-- `Rinemaca: Toggle Session Marker`
-- `Rinemaca: Toggle Workspace Marker`
-- `Rinemaca: Remove Marker`
-- `Rinemaca: Clear Session Markers`
-- `Rinemaca: Clear Workspace Markers`
-- `Rinemaca: Export Session Markers`
-- `Rinemaca: Export Workspace Markers`
-- `Rinemaca: Next Marker`
-- `Rinemaca: Previous Marker`
-- `Rinemaca: Next Session Marker`
-- `Rinemaca: Previous Session Marker`
-- `Rinemaca: Next Workspace Marker`
-- `Rinemaca: Previous Workspace Marker`
+`Rinemaca: Add Session Marker`  
+Adds the selected line as a session marker.
 
-## Editor Context Menu
+`Rinemaca: Add Workspace Marker`  
+Adds the selected line as a workspace marker.
 
-The editor right-click menu groups commands under a `Rinemaca` submenu.
+`Rinemaca: Toggle Session Marker`  
+Adds or removes a session marker on the selected line.
 
-Available actions:
+`Rinemaca: Toggle Workspace Marker`  
+Adds or removes a workspace marker on the selected line.
 
-- `Toggle Session Marker`
-- `Toggle Workspace Marker`
+`Rinemaca: Remove Marker`  
+Removes the marker on the selected line.
+
+`Rinemaca: Clear Session Markers`  
+Removes all session markers.
+
+`Rinemaca: Clear Workspace Markers`  
+Removes all workspace markers.
+
+`Rinemaca: Export Session Markers`  
+Exports session markers to CSV.
+
+`Rinemaca: Export Workspace Markers`  
+Exports workspace markers to CSV.
+
+`Rinemaca: Next Marker`  
+Moves to the next marker across both session and workspace markers.
+
+`Rinemaca: Previous Marker`  
+Moves to the previous marker across both session and workspace markers.
+
+`Rinemaca: Next Session Marker`  
+Moves to the next session marker.
+
+`Rinemaca: Previous Session Marker`  
+Moves to the previous session marker.
+
+`Rinemaca: Next Workspace Marker`  
+Moves to the next workspace marker.
+
+`Rinemaca: Previous Workspace Marker`  
+Moves to the previous workspace marker.
+
+## Features
+
+- Marks full lines like bookmarks.
+- Reflects marker positions on the scrollbar.
+- Separates temporary session markers from saved workspace markers.
+- Supports marker lists and jump actions from the sidebar.
+- Supports CSV export for marker lists.
+
+### Session vs Workspace
+
+| Type | Usage |
+| --- | --- |
+| Session | Temporary markers used only while VS Code is open |
+| Workspace | Markers saved in the workspace and available after restart |
 
 ## Sidebar
 
-The `Rinemaca` sidebar shows two sections:
-
-- `Session Markers`
-- `Workspace Markers`
-
-Clicking a marker jumps to that file and line.
-
-The sidebar title buttons provide:
-
-- `Clear Session Markers`
-- `Clear Workspace Markers`
-- `Export Session Markers`
-- `Export Workspace Markers`
+- Adds `Rinemaca` to the sidebar.
+- Shows markers in separate `Session Markers` and `Workspace Markers` groups.
 
 ## Settings
 
-Rinemaca provides these settings:
+Marker colors use `rgba(R, G, B, A)` format. Overview ruler colors are reflected on the scrollbar.
 
-- `rinemaca.sessionMarkerBackground`
-- `rinemaca.sessionMarkerBorder`
-- `rinemaca.sessionMarkerOverviewRuler`
-- `rinemaca.workspaceMarkerBackground`
-- `rinemaca.workspaceMarkerBorder`
-- `rinemaca.workspaceMarkerOverviewRuler`
+`rinemaca.sessionMarkerBackground`  
+Background color for session markers.
 
-## CSV Export
+`rinemaca.sessionMarkerBorder`  
+Border color for session markers.
 
-Session markers and workspace markers can be exported separately to CSV.
+`rinemaca.sessionMarkerOverviewRuler`  
+Overview ruler color for session markers.
 
-Format:
+`rinemaca.workspaceMarkerBackground`  
+Background color for workspace markers.
 
-- Header: `File,Line,Text`
-- Tabs in the text are replaced with two spaces
-- Leading tabs and spaces are removed from the text
-- Files are written as UTF-8 with BOM
+`rinemaca.workspaceMarkerBorder`  
+Border color for workspace markers.
 
-## Notes
+`rinemaca.workspaceMarkerOverviewRuler`  
+Overview ruler color for workspace markers.
 
-- Session markers live only until VS Code reloads.
-- Workspace markers are stored per workspace using VS Code workspace state.
-- If you select multiple lines, each selected line is registered as a marker.
-- Navigation commands wrap around when they reach the beginning or end of the marker list.
-- `Toggle Session Marker` adds or removes session markers only.
-- `Toggle Workspace Marker` adds or removes workspace markers only.
-- Removing a marker removes both the session marker and workspace marker at the same file and line, if both exist.
+## Defaults
+
+```json
+{
+  "rinemaca.sessionMarkerBackground": "rgba(255, 215, 0, 0.22)",
+  "rinemaca.sessionMarkerBorder": "rgba(255, 215, 0, 0.85)",
+  "rinemaca.sessionMarkerOverviewRuler": "rgba(255, 215, 0, 0.9)",
+  "rinemaca.workspaceMarkerBackground": "rgba(64, 156, 255, 0.18)",
+  "rinemaca.workspaceMarkerBorder": "rgba(64, 156, 255, 0.85)",
+  "rinemaca.workspaceMarkerOverviewRuler": "rgba(64, 156, 255, 0.9)"
+}
+```
 
 ## Development
 
@@ -95,6 +112,7 @@ Format:
 ```powershell
 npm.cmd install
 npm.cmd run compile
+npm.cmd run package
 ```
 
 ### Command Prompt
@@ -102,16 +120,13 @@ npm.cmd run compile
 ```cmd
 npm install
 npm run compile
+npm run package
 ```
 
-Press `F5` to launch an Extension Development Host for testing.
+## Other
 
-To build a VSIX package:
-
-```powershell
-npm.cmd run package
-```
+- This extension was created with Codex.
 
 ## License
 
-MIT
+MIT License
