@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "rinemaka",
   "displayName": "Rinemaka",
   "description": "Whole-line bookmarks for VS Code with session markers, workspace markers, sidebar navigation, and CSV export.",
@@ -151,7 +151,7 @@
         {
           "id": "rinemakaSidebar",
           "title": "Rinemaka",
-          "icon": "media/rinemaka-panel.svg"
+            "icon": "media/panel-icon.svg"
         }
       ]
     },

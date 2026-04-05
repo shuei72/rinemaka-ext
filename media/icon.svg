@@ -1,0 +1,25 @@
+<svg width="256" height="256" viewBox="8 8 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rinemaca icon idea sidebar ruler">
+  <defs>
+    <linearGradient id="bg3" x1="10" y1="10" x2="246" y2="246" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#10263A"/>
+      <stop offset="1" stop-color="#0C1218"/>
+    </linearGradient>
+    <linearGradient id="sidebar" x1="28" y1="28" x2="104" y2="228" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1A3A59"/>
+      <stop offset="1" stop-color="#13283F"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="44" fill="url(#bg3)"/>
+  <rect x="28" y="28" width="76" height="200" rx="22" fill="url(#sidebar)" stroke="#7FB1E0" stroke-width="6"/>
+  <rect x="124" y="52" width="96" height="20" rx="10" fill="#DCEAF8"/>
+  <rect x="124" y="96" width="96" height="20" rx="10" fill="#DCEAF8"/>
+  <rect x="124" y="140" width="96" height="20" rx="10" fill="#DCEAF8"/>
+  <rect x="124" y="184" width="96" height="20" rx="10" fill="#DCEAF8"/>
+  <rect x="60" y="52" width="14" height="40" rx="7" fill="#F1C232"/>
+  <rect x="60" y="104" width="14" height="60" rx="7" fill="#4BA3FF"/>
+  <rect x="60" y="176" width="14" height="26" rx="7" fill="#F1C232"/>
+  <path d="M110 62h18" stroke="#F1C232" stroke-width="8" stroke-linecap="round"/>
+  <path d="M110 106h18" stroke="#4BA3FF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M110 150h18" stroke="#F1C232" stroke-width="8" stroke-linecap="round"/>
+  <path d="M110 194h18" stroke="#4BA3FF" stroke-width="8" stroke-linecap="round"/>
+</svg>
