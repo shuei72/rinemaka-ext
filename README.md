@@ -1,9 +1,13 @@
-﻿# Rinemaka
+﻿<p align="center">
+  <img src="media/icon.png" alt="Rinemaka icon" width="128" />
+</p>
+
+# Rinemaka
 
 Rinemaka is a VS Code extension for managing line markers in either session scope or workspace scope.  
 The sidebar shows marker lists and supports CSV export.
 
-## Commands
+## ✨ Commands
 
 `Rinemaka: Add Session Marker`  
 Adds the selected line as a session marker.
@@ -50,7 +54,7 @@ Moves to the next workspace marker.
 `Rinemaka: Previous Workspace Marker`  
 Moves to the previous workspace marker.
 
-## Features
+## 📌 Features
 
 - Marks full lines like bookmarks.
 - Reflects marker positions on the scrollbar.
@@ -65,12 +69,12 @@ Moves to the previous workspace marker.
 | Session | Temporary markers used only while VS Code is open |
 | Workspace | Markers saved in the workspace and available after restart |
 
-## Sidebar
+## 🗂️ Sidebar
 
 - Adds `Rinemaka` to the sidebar.
 - Shows markers in separate `Session Markers` and `Workspace Markers` groups.
 
-## Settings
+## ⚙️ Settings
 
 Marker colors use `rgba(R, G, B, A)` format. Overview ruler colors are reflected on the scrollbar.
 
